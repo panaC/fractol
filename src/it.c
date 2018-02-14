@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 11:40:33 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/12 13:19:17 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/14 20:16:53 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ int			expose_win(t_fract *fract)
 	draw_mandelbrot(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->img.img, 0, 0);
 	mlx_destroy_image(fract->mlx, fract->img.img);
+	return (TRUE);
+}
+
+int			mouse_win3(int x, int y, void *p)
+{;
+	((t_fract*)p)->mouse_x = (float)x / ((t_fract*)p)->zoom;
+	((t_fract*)p)->mouse_y = (float)y / ((t_fract*)p)->zoom;
+	//printf(" %f %f\n", ((t_fract*)p)->mouse_x, ((t_fract*)p)->mouse_y);
+	//expose_win(fract);
 	return (TRUE);
 }
 

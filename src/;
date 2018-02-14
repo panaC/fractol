@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 12:59:28 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/14 20:12:00 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/14 19:01:58 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,37 @@
 
 int			draw_mandelbrot(t_fract *fract)
 {
-/*	double		x1 = -2.1;
-	double		x2 = 0.6;
-	double		y1 = -1.2;
-	double		y2 = 1.2;*/
-	double		rapport = (double)fract->size_win_x / (double)fract->size_win_y;
-	printf("double %.60f\n", fract->h);
-	double		x1 = fract->mouse_x - fract->h;
-	double		x2 = fract->mouse_x + fract->h;
-	double		y1 = fract->mouse_y - (fract->h / rapport);
-	double		y2 = fract->mouse_y + (fract->h / rapport);
-	printf("rapport fract->h %.36f\n", (fract->h / rapport));
-	printf("fract->zoom %.36f\n", fract->zoom);
-	int			iter_max = 255;
-	printf(" %.36f %.36f\n", (x2 - x1) , (y2 - y1) );
-	int			img_x = (int)((x2 - x1) * (double)fract->zoom);
-	int			img_y = (int)((y2 - y1) * (double)fract->zoom);
+/*	float		x1 = -2.1;
+	float		x2 = 0.6;
+	float		y1 = -1.2;
+	float		y2 = 1.2;*/
+	float		rapport = (float)fract->size_win_x / (float)fract->size_win_y;
+	float		h = 2.0;
+	float		x1 = 0.0 - h;
+	float		x2 = 0.0 + h;
+	float		y1 = 0.0 - (h / rapport);
+	float		y2 = 0.0 + (h / rapport);
+	int			zoom = fract->size_win_x / h / 2;
+	int			iter_max = 100;
+	printf(" %d %d\n", (int)(x2 - x1) , (int)(y2 - y1) );
+	int			img_x = (int)((x2 - x1) * (float)zoom);
+	int			img_y = (int)((y2 - y1) * (float)zoom);
 	printf(" %d %d\n", img_x, img_y);
 	int			x = 0;
 	int			y = 0;
-	double			cr;
-	double			ci;
-	double			zr;
-	double			zi;
+	float			cr;
+	float			ci;
+	float			zr;
+	float			zi;
 	int			i;
-	double			tmp;
+	float			tmp;
 
 	while (x < img_x)
 	{
 		while (y < img_y)
 		{
-			cr = x / (double)fract->zoom + x1;
-			ci = y / (double)fract->zoom + y1;
+			cr = x / (float)zoom + x1;
+			ci = y / (float)zoom + y1;
 			zr = 0.0;
 			zi = 0.0;
 			i = 0;
@@ -62,9 +61,9 @@ int			draw_mandelbrot(t_fract *fract)
 			}
 			int size_x = (fract->size_win_x / 2) - (img_x / 2);
 			int size_y = (fract->size_win_y / 2) - (img_y / 2);
-			fract->img.addr[(y + size_y) * fract->img.size_line + (x + size_x) * (fract->img.bpp / 8) + 0] = i;
-			fract->img.addr[(y + size_y) * fract->img.size_line + (x + size_x) * (fract->img.bpp / 8) + 1] = i;
-			fract->img.addr[(y + size_y) * fract->img.size_line + (x + size_x) * (fract->img.bpp / 8) + 2] = i;
+			fract->img.addr[(y + size_y) * fract->img.size_line + (x + size_x) * (fract->img.bpp / 8) + 0] = (int)(i * 2.5);
+			fract->img.addr[(y + size_y) * fract->img.size_line + (x + size_x) * (fract->img.bpp / 8) + 1] = (int)(i * 2.5);
+			fract->img.addr[(y + size_y) * fract->img.size_line + (x + size_x) * (fract->img.bpp / 8) + 2] = (int)(i * 2.5);
 			y++;
 		}
 		y = 0;
