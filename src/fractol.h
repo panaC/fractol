@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 10:49:51 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/15 21:17:59 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/15 21:34:24 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ typedef struct				s_fractol
 	int						size_win_x;
 	int						size_win_y;
 	t_img					img;
-	double					mouse_x;
-	double					mouse_y;
-	double					h;
-	double					zoom;
+	long double					mouse_x;
+	long double					mouse_y;
+	long double					h;
+	long double					zoom;
 }							t_fract;
 
 /*

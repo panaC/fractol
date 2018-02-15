@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 11:40:33 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/15 21:28:23 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/15 22:17:07 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ int			mouse_win3(int but, int x, int y, void *p)
 		printf("%d %d\n", x, y);
 		if (but == 1)
 		{
-			fract->mouse_x += (double)x / fract->zoom;
-			fract->mouse_y += (double)y / fract->zoom;
-			fract->h /= 2;
+			fract->mouse_x += (long double)x / fract->zoom;
+			fract->mouse_y += (long double)y / fract->zoom;
+			fract->h /= 2.0;
 			fract->zoom = fract->size_win_x / fract->h / 2;
 		}
 		else if (but == 2) /* 2 Apple  / 3 linux*/
 		{
-			fract->mouse_x -= (double)x / fract->zoom;
-			fract->mouse_y -= (double)y / fract->zoom;
-			fract->h *= 2;
+			fract->mouse_x -= (long double)x / fract->zoom;
+			fract->mouse_y -= (long double)y / fract->zoom;
+			fract->h *= 2.0;
 			fract->zoom = fract->size_win_x * fract->h * 2;
 		}
-		else if (but == 5)
+		/*else if (but == 5)
 		{
 			fract->h /= 1.1;
 			fract->zoom = fract->size_win_x / fract->h / 2;
@@ -69,9 +69,9 @@ int			mouse_win3(int but, int x, int y, void *p)
 		{
 			fract->h *= 1.1;
 			fract->zoom = fract->size_win_x * fract->h * 2;
-		}
+		}*/
 		printf("%d %d %d\n", x, y, but);
-		printf(" %f %f %f %f\n", fract->mouse_x, fract->mouse_y, fract->zoom, fract->h);
+		printf(" %Lf %Lf %Lf %Lf\n", fract->mouse_x, fract->mouse_y, fract->zoom, fract->h);
 		expose_win(fract);
 	}
 	return (TRUE);
