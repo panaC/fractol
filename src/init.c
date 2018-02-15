@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 11:27:51 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/15 14:06:42 by pierre           ###   ########.fr       */
+/*   Updated: 2018/02/15 21:03:19 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int			init(t_fract *fract)
 {
 	fract->size_win_x = 1280;
 	fract->size_win_y = 720;
-	fract->h = 4;
+	fract->h = 4.0;
 	fract->mouse_x = 0.0;
 	fract->mouse_y = 0.0;
-	fract->zoom = fract->size_win_x / fract->h / 2;
+	fract->zoom = fract->size_win_x / fract->h / 2.0;
 	if ((!init_mlx(fract)))
 		return (FALSE);
 	return (TRUE);

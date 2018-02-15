@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 11:40:33 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/15 14:47:20 by pierre           ###   ########.fr       */
+/*   Updated: 2018/02/15 21:28:23 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,15 @@ int			mouse_win3(int but, int x, int y, void *p)
 		{
 			fract->mouse_x += (double)x / fract->zoom;
 			fract->mouse_y += (double)y / fract->zoom;
+			fract->h /= 2;
+			fract->zoom = fract->size_win_x / fract->h / 2;
 		}
-		else if (but == 3)
+		else if (but == 2) /* 2 Apple  / 3 linux*/
 		{
-			fract->mouse_x -= (double)x / (fract->zoom * fract->h);
-			fract->mouse_y -= (double)y / (fract->zoom * fract->h);
+			fract->mouse_x -= (double)x / fract->zoom;
+			fract->mouse_y -= (double)y / fract->zoom;
+			fract->h *= 2;
+			fract->zoom = fract->size_win_x * fract->h * 2;
 		}
 		else if (but == 5)
 		{
@@ -81,7 +85,7 @@ int			key_win(int key, t_fract *fract)
 	if (key == K_ESCAPE)
 	{
 		mlx_destroy_window(fract->mlx, fract->win);
-//		free_fdf(&fdf);
+		free_fract(&fract);
 		exit(0);
 	}
 /*	while (i < 12)

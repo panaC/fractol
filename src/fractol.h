@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 10:49:51 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/15 11:21:06 by pierre           ###   ########.fr       */
+/*   Updated: 2018/02/15 21:17:59 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,11 @@ int			mouse_win3(int but, int x, int y, void *p);
 */
 
 int			draw_mandelbrot(t_fract *fract);
+
+/*
+** misc.c
+*/
+
+int			free_fract(t_fract **fract);
 
 #endif
