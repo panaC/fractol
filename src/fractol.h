@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 10:49:51 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/14 20:07:30 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/15 11:21:06 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 #  define K_J			38
 #  define K_K			40
 #  define K_L			37
+# endif
 /*
  * ** Key event, Key mask
  * */
@@ -49,7 +50,6 @@
 #  define MOTION_NOTIFY 6
 #  define KEY_PRESS_MASK (1L<<0)
 #  define KEY_PRESS 2
-# endif
 # define PI				3.14159265358979323846
 #
 
@@ -88,7 +88,7 @@ int			init(t_fract *fract);
 
 int			expose_win(t_fract *fract);
 int			key_win(int key, t_fract *fract);
-int			mouse_win3(int x, int y, void *p);
+int			mouse_win3(int but, int x, int y, void *p);
 
 /*
 ** mandelbrot.c

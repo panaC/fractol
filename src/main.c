@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 10:48:36 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/12 12:13:18 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/15 11:01:43 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <libft.h>
 #include "fractol.h"
 
-int		main(int ac, char **av)
+int		main(__attribute__((unused))int ac, __attribute__((unused))char **av)
 {
 	ac = 0;
 	av = NULL;

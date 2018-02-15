@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 12:59:28 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/14 20:12:00 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/15 11:13:50 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ int			draw_mandelbrot(t_fract *fract)
 	double		y1 = -1.2;
 	double		y2 = 1.2;*/
 	double		rapport = (double)fract->size_win_x / (double)fract->size_win_y;
-	printf("double %.60f\n", fract->h);
+//	printf("double %.60f\n", fract->h);
 	double		x1 = fract->mouse_x - fract->h;
 	double		x2 = fract->mouse_x + fract->h;
 	double		y1 = fract->mouse_y - (fract->h / rapport);
 	double		y2 = fract->mouse_y + (fract->h / rapport);
-	printf("rapport fract->h %.36f\n", (fract->h / rapport));
-	printf("fract->zoom %.36f\n", fract->zoom);
+//	printf("rapport fract->h %.36f\n", (fract->h / rapport));
+//	printf("fract->zoom %.36f\n", fract->zoom);
 	int			iter_max = 255;
-	printf(" %.36f %.36f\n", (x2 - x1) , (y2 - y1) );
+//	printf(" %.36f %.36f\n", (x2 - x1) , (y2 - y1) );
 	int			img_x = (int)((x2 - x1) * (double)fract->zoom);
 	int			img_y = (int)((y2 - y1) * (double)fract->zoom);
-	printf(" %d %d\n", img_x, img_y);
+//	printf(" %d %d\n", img_x, img_y);
 	int			x = 0;
 	int			y = 0;
 	double			cr;
