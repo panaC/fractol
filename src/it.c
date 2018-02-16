@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 11:40:33 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 03:38:04 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/16 04:04:54 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,25 @@ int			expose_win(t_fract *fract)
 	return (TRUE);
 }
 
+int			motion_win(int x, int y, void *p)
+{
+	t_fract		*fract;
+	
+	fract = (t_fract*)p;
+	if (x > 0 && x <= fract->size_win_x && y > 0 && y <= fract->size_win_y)
+	{
+		x = x - (fract->size_win_x / 2);
+		y = y - (fract->size_win_y / 2);
+		fract->julia_r = (long double)x / (fract->size_win_x / 2);
+		fract->julia_i = (long double)y / (fract->size_win_x / 2);
+		expose_win(fract);
+	}
+	return (TRUE);
+}
+
 int			mouse_win(int but, int x, int y, void *p)
 {
-	t_fract *fract;
+	t_fract		*fract;
 	
 	fract = (t_fract*)p;
 	if (x > 0 && x <= fract->size_win_x && y > 0 && y <= fract->size_win_y)

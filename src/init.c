@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 11:27:51 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 03:27:53 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/16 03:52:37 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			init_mlx(t_fract *fract)
 			fract->size_win_y, "fract_ol");
 	mlx_expose_hook(fract->win, expose_win, fract);
 	mlx_key_hook(fract->win, key_win, fract);
-	//mlx_hook(fract->win, MOTION_NOTIFY, PTR_MOTION_MASK, mouse_win3, fract);
+	mlx_hook(fract->win, MOTION_NOTIFY, PTR_MOTION_MASK, motion_win, fract);
 	mlx_mouse_hook(fract->win, mouse_win, fract);
 	return (TRUE);
 }

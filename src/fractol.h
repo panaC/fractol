@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 10:49:51 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 02:42:18 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/16 03:58:35 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ typedef struct				s_fractol
 	int						speed;
 	t_arg					*arg;
 	int						color;
+	long double				julia_r;
+	long double				julia_i;
 }							t_fract;
 
 /*
@@ -110,6 +112,7 @@ int			init(t_fract *fract);
 int			expose_win(t_fract *fract);
 int			key_win(int key, t_fract *fract);
 int			mouse_win(int but, int x, int y, void *p);
+int			motion_win(int x, int y, void *p);
 
 /*
 ** mandelbrot.c
