@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 12:59:28 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 10:19:31 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/16 11:34:14 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ static void		burningball(t_draw *d, t_fract *fract, int *i)
 	*i = 0;
 	while ((d->zr*d->zr + d->zi*d->zi) < 4.0 && *i < fract->iter_max)
 	{
-		tmp = d->zr;
-		d->zr = d->zr*d->zr - d->zi*d->zi + d->cr;
-		d->zi = 2*d->zi*fabsl(tmp) + d->ci;
+		tmp = d->zr*d->zr - d->zi*d->zi + d->cr;
+		d->zi = fabsl(2*d->zi*d->zr + d->ci);
+		d->zr = fabsl(tmp);
 		*i = *i + 1;
 	}
 }
