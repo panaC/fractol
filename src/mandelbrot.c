@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 12:59:28 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/15 22:32:47 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/16 02:39:11 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int			draw_mandelbrot(t_fract *fract)
 	long double		y2 = fract->mouse_y + (fract->h / (long double)rapport);
 //	printf("rapport fract->h %.36f\n", (fract->h / rapport));
 //	printf("fract->zoom %.36f\n", fract->zoom);
-	int			iter_max = 255;
 //	printf(" %.36f %.36f\n", (x2 - x1) , (y2 - y1) );
 	int			img_x = (int)((x2 - x1) * fract->zoom);
 	int			img_y = (int)((y2 - y1) * fract->zoom);
@@ -52,19 +51,14 @@ int			draw_mandelbrot(t_fract *fract)
 			zr = 0.0;
 			zi = 0.0;
 			i = 0;
-			
-			while ((zr*zr + zi*zi) < 4.0 && i < iter_max)
+			while ((zr*zr + zi*zi) < 4.0 && i < fract->iter_max)
 			{
 				tmp = zr;
 				zr = zr*zr - zi*zi + cr;
 				zi = 2*zi*tmp + ci;
 				i++;
 			}
-			int size_x = (fract->size_win_x / 2) - (img_x / 2);
-			int size_y = (fract->size_win_y / 2) - (img_y / 2);
-			fract->img.addr[(y + size_y) * fract->img.size_line + (x + size_x) * (fract->img.bpp / 8) + 0] = i * i;
-			fract->img.addr[(y + size_y) * fract->img.size_line + (x + size_x) * (fract->img.bpp / 8) + 1] = i;
-			fract->img.addr[(y + size_y) * fract->img.size_line + (x + size_x) * (fract->img.bpp / 8) + 2] = x * y;
+			put_image(fract, x, y, i);
 			y++;
 		}
 		y = 0;

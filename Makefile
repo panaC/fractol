@@ -6,7 +6,7 @@
 #    By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/11 13:59:37 by pierre            #+#    #+#              #
-#    Updated: 2018/02/15 21:19:31 by pleroux          ###   ########.fr        #
+#    Updated: 2018/02/16 00:33:29 by pleroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC_FILE = main.c \
 		   it.c \
 		   init.c \
 		   mandelbrot.c \
-		   misc.c
+		   misc.c \
+		   arg.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 OBJ = $(SRC:.c=.o)
 
