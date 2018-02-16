@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 23:39:29 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 03:21:23 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/16 10:53:23 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 		ft_putstr(s);
 		ft_putstr(" [option] fractal\n\n");
 		ft_putstr("Fractal explorer\n"
-				"mandelbrot /  julia / burningship\n\n");
+				"fractal : mandelbrot / julia / burn\n\n");
 		ft_putstr(" OPTIONS :        \n"
 				" --iter=NUM\t\tNumber of iteration fractal suit\n"
 				" --speed=NUM\t\tspeed bettween 10 to 20\n"
@@ -54,6 +54,10 @@ t_bool				check_arg(t_fract *fract, int ac, char **av)
 			!ft_check_longparam(fract->arg->long_param, set_arg(), TRUE))
 		return (error_arg(av[0]));
 	if (ft_search_param(fract->arg->long_param, NULL, "help"))
+		return (error_arg(av[0]));
+	if (!(!ft_strcmp(fract->arg->data_param->content, "mandelbrot") ||
+			!ft_strcmp(fract->arg->data_param->content, "julia") ||
+			!ft_strcmp(fract->arg->data_param->content, "burn")))
 		return (error_arg(av[0]));
 	return (TRUE);
 }

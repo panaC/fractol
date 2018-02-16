@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 11:27:51 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 03:52:37 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/16 10:51:19 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,29 @@
 #include "fractol.h"
 #include <stdio.h>
 
+int			init_fract(t_fract *fract, int s)
+{
+	fract->h = 4.0;
+	fract->mouse_x = 0.0;
+	fract->mouse_y = 0.0;
+	fract->select = s;
+	fract->zoom = fract->size_win_x / fract->h / 2.0;
+	return (TRUE);
+}
+
 int			init(t_fract *fract)
 {
 	ft_setparam_int(fract->arg, "iter", &(fract->iter_max), ITER);
 	ft_setparam_int(fract->arg, "speed", &(fract->speed), SPEED);
 	ft_setparam_doubleint(fract->arg, "size-win", &(fract->size_win_x), SIZE_X);
 	ft_setparam_doubleint(fract->arg, "size-win", &(fract->size_win_y), SIZE_Y);
-	printf(" %d %d\n", fract->iter_max, fract->speed);
+	if (!ft_strcmp(fract->arg->data_param->content, "burn"))
+		init_fract(fract, BURN);
+	else if (!ft_strcmp(fract->arg->data_param->content, "julia"))
+		init_fract(fract, JULIA);
+	else
+		init_fract(fract, MANDEL);
 	fract->color = 3;
-	fract->h = 4.0;
-	fract->mouse_x = 0.0;
-	fract->mouse_y = 0.0;
-	fract->zoom = fract->size_win_x / fract->h / 2.0;
 	if ((!init_mlx(fract)))
 		return (FALSE);
 	return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 10:49:51 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 03:58:35 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/16 10:20:43 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@
 #  define K_R			15
 #  define K_T			17
 #  define K_Y			16
+#  define K_0			82
+#  define K_1			83
+#  define K_2			84
 #  define M_LEFT		1
 #  define M_RIGHT		2
 #  define M_UP			7
@@ -69,6 +72,9 @@
 # define SPEED			20
 # define SIZE_X			1280
 # define SIZE_Y			720
+# define MANDEL			1
+# define JULIA			2
+# define BURN			3
 
 typedef struct				s_img
 {
@@ -96,7 +102,25 @@ typedef struct				s_fractol
 	int						color;
 	long double				julia_r;
 	long double				julia_i;
+	int						select;
 }							t_fract;
+
+typedef struct				s_draw
+{
+	long double				x1;
+	long double				x2;
+	long double				y1;
+	long double				y2;
+	long double				cr;
+	long double				ci;
+	long double				zr;
+	long double				zi;
+	int						x;
+	int						y;
+	int						img_x;
+	int						img_y;
+}							t_draw;
+	
 
 /*
 ** init.c
@@ -104,6 +128,7 @@ typedef struct				s_fractol
 
 int			init_mlx(t_fract *fract);
 int			init(t_fract *fract);
+int			init_fract(t_fract *fract, int s);
 
 /*
 ** it.c
@@ -118,7 +143,7 @@ int			motion_win(int x, int y, void *p);
 ** mandelbrot.c
 */
 
-int			draw_mandelbrot(t_fract *fract);
+int			draw(t_fract *fract);
 
 /*
 ** misc.c

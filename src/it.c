@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 11:40:33 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 04:04:54 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/16 10:41:05 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			expose_win(t_fract *fract)
 		return (FALSE);
 	fract->img.addr = mlx_get_data_addr(fract->img.img, &(fract->img.bpp),
 			&(fract->img.size_line), &(fract->img.endian));
-	draw_mandelbrot(fract);
+	draw(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->img.img, 0, 0);
 	mlx_destroy_image(fract->mlx, fract->img.img);
 	return (TRUE);
@@ -74,23 +74,20 @@ int			mouse_win(int but, int x, int y, void *p)
 
 int			key_win(int key, t_fract *fract)
 {
-	//int		i;
-
-	//i = 0;
 	if (key == K_ESCAPE)
 	{
 		mlx_destroy_window(fract->mlx, fract->win);
 		free_fract(&fract);
 		exit(0);
 	}
-	fract->color = key % K_Q + 1;
+	else if (key == K_0)
+		init_fract(fract, MANDEL);
+	else if (key == K_1)
+		init_fract(fract, JULIA);
+	else if (key == K_2)
+		init_fract(fract, BURN);
+	else
+		fract->color = key % K_Q + 1;
 	expose_win(fract);
-	printf("color %d\n",  fract->color);
-/*	while (i < 12)
-	{
-		if ((fdf->ev[i]).key == key)
-			(fdf->ev[i]).ft(fdf);
-		i++;
-	}*/
 	return (TRUE);
 }

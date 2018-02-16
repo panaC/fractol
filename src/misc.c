@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 21:14:25 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 03:18:26 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/16 10:46:19 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			free_fract(t_fract **fract)
 	t_fract	*f;
 
 	f = *fract;
-	//ft_freearg(&(fd->arg));
+	ft_freearg(&(f->arg));
 	ft_memdel((void**)&(f->mlx));
 	ft_memdel((void**)fract);
 	return (TRUE);
