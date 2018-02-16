@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 12:59:28 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 06:31:03 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/16 08:04:29 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,44 +36,45 @@ int			draw_mandelbrot(t_fract *fract)
 //	printf(" %d %d\n", img_x, img_y);
 	int			x = 0;
 	int			y = 0;
-	//long double			cr;
-	//long double			ci;
+	long double			cr;
+	long double			ci;
 	long double			zr;
 	long double			zi;
 	int			i;
-	//double			tmp;
+	long double			tmp;
 
 	while (x < img_x)
 	{
 		while (y < img_y)
 		{
-			/*
 			cr = x / fract->zoom + x1;
 			ci = y / fract->zoom + y1;
-			*/
+			
 			/*
 			cr = fract->julia_r;
 			ci = fract->julia_i;
 			zr = x / fract->zoom + x1;
 			zi = y / fract->zoom + y1;
 			*/
-			zr = x / fract->zoom + x1;
-			zi = y / fract->zoom + y1;
 			/*
+			cr = x / fract->zoom + x1;
+			ci = y / fract->zoom + y1;
+			zr = cr;
+			zi = ci;
+			*/
 			zr = 0.0;
 			zi = 0.0;
-			*/
 			i = 0;
 			while ((zr*zr + zi*zi) < 4.0 && i < fract->iter_max)
 			{
-				/*
 				tmp = zr;
 				zr = zr*zr - zi*zi + cr;
-				zi = 2*zi*tmp + ci;
-				*/
+				zi = 2*zi*fabsl(tmp) + ci;
+				/*
 				zi = fabsl(zr*zi);
-				zi = zi + zi;
-				zr = zr*zr - zi*zi;
+				zi = zi + zi - ci;
+				zr = zr*zr - zi*zi + cr;
+				*/
 				i++;
 			}
 			put_image(fract, x, y, i);
