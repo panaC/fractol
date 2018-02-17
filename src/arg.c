@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 23:39:29 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 10:53:23 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/17 19:04:58 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 				"fractal : mandelbrot / julia / burn\n\n");
 		ft_putstr(" OPTIONS :        \n"
 				" --iter=NUM\t\tNumber of iteration fractal suit\n"
-				" --speed=NUM\t\tspeed bettween 10 to 20\n"
+				" --speed=NUM\t\tSpeed between 10 to 20\n"
 				" --size-win=NUM,NUM\tWindow size by x,y\n"
+				" --threads=NUM\t\tNumber of threads between 4 to 200\n"
 				" --help\t\t\tThis help\n\n"
 				" CONTROLS :\n"
 				" q-w-e-r-t-y-u-i-o-p :\n"
@@ -42,6 +43,7 @@ static t_list		*set_arg(void)
 	ft_lstaddstr(&lst, "iter");
 	ft_lstaddstr(&lst, "speed");
 	ft_lstaddstr(&lst, "size-win");
+	ft_lstaddstr(&lst, "threads");
 	ft_lstaddstr(&lst, "help");
 	return (lst);
 }

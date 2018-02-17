@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 10:49:51 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 10:20:43 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/17 18:57:27 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@
 #  define K_J			'j'
 #  define K_K			'k'
 #  define K_L			'l'
+#  define K_Q			'q'
+#  define K_W			'w'
+#  define K_E			'e'
+#  define K_R			'r'
+#  define K_T			't'
+#  define K_Y			'y'
+#  define K_0			'0'
+#  define K_1			'1'
+#  define K_2			'2'
 #  define M_LEFT		1
 #  define M_RIGHT		3
 #  define M_UP			5
@@ -75,6 +84,7 @@
 # define MANDEL			1
 # define JULIA			2
 # define BURN			3
+# define NB_THREADS		4
 
 typedef struct				s_img
 {
@@ -103,6 +113,8 @@ typedef struct				s_fractol
 	long double				julia_r;
 	long double				julia_i;
 	int						select;
+	int						nb_threads;
+
 }							t_fract;
 
 typedef struct				s_draw
@@ -119,6 +131,8 @@ typedef struct				s_draw
 	int						y;
 	int						img_x;
 	int						img_y;
+	int						numero;
+	t_fract					*fract;
 }							t_draw;
 	
 
@@ -143,7 +157,7 @@ int			motion_win(int x, int y, void *p);
 ** mandelbrot.c
 */
 
-int			draw(t_fract *fract);
+void		*draw(void *p);
 
 /*
 ** misc.c
@@ -158,5 +172,11 @@ int			color(t_fract *f, int i, int n);
 */
 
 t_bool		check_arg(t_fract *fract, int ac, char **av);
+
+/*
+**
+*/
+
+int			draw_threads(t_fract *fract);
 
 #endif

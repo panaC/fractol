@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 12:59:28 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 11:34:14 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/17 19:51:35 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 static void		init_draw(t_draw *d, t_fract *fract)
 {
 	double			rapport;
+	int				size;
 	
 	rapport = (double)fract->size_win_x / (double)fract->size_win_y;
 	d->x1 = fract->mouse_x - fract->h;
@@ -27,8 +28,10 @@ static void		init_draw(t_draw *d, t_fract *fract)
 	d->y2 =  fract->mouse_y + (fract->h / (long double)rapport);
 	d->img_x = (int)((d->x2 - d->x1) * fract->zoom);
 	d->img_y = (int)((d->y2 - d->y1) * fract->zoom);
-	d->x = 0;
+	size = d->img_x / fract->nb_threads;
+	d->x = d->numero * size;
 	d->y = 0;
+	d->img_x = (d->numero + 1) * size;
 }
 
 static void		mandelbrot(t_draw *d, t_fract *fract, int *i)
@@ -85,27 +88,30 @@ static void		burningball(t_draw *d, t_fract *fract, int *i)
 	}
 }
 
-int			draw(t_fract *fract)
+void			*draw(void *p)
 {
 	int				i;
-	t_draw			draw;
+	t_fract			*fract;
+	t_draw			*draw;
 
-	init_draw(&draw, fract);
-	while (draw.x < draw.img_x)
+	draw = (t_draw*)p;
+	fract = draw->fract;
+	init_draw(draw, fract);
+	while (draw->x < draw->img_x)
 	{
-		while (draw.y < draw.img_y)
+		while (draw->y < draw->img_y)
 		{
 			if (fract->select == MANDEL)
-				mandelbrot(&draw, fract, &i);
+				mandelbrot(draw, fract, &i);
 			else if (fract->select == JULIA)
-				julia(&draw, fract, &i);
+				julia(draw, fract, &i);
 			else if (fract->select == BURN)
-				burningball(&draw, fract, &i);
-			put_image(fract, draw.x, draw.y, i);
-			draw.y++;
+				burningball(draw, fract, &i);
+			put_image(fract, draw->x, draw->y, i);
+			draw->y++;
 		}
-		draw.y = 0;
-		draw.x = draw.x + 1;
+		draw->y = 0;
+		draw->x = draw->x + 1;
 	}
-	return (TRUE);
+	return (NULL);
 }

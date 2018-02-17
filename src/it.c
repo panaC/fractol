@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 11:40:33 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 10:41:05 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/17 18:33:50 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int			expose_win(t_fract *fract)
 		return (FALSE);
 	fract->img.addr = mlx_get_data_addr(fract->img.img, &(fract->img.bpp),
 			&(fract->img.size_line), &(fract->img.endian));
-	draw(fract);
+//	draw(fract);
+	draw_threads(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->img.img, 0, 0);
 	mlx_destroy_image(fract->mlx, fract->img.img);
 	return (TRUE);
@@ -33,7 +34,8 @@ int			motion_win(int x, int y, void *p)
 	t_fract		*fract;
 	
 	fract = (t_fract*)p;
-	if (x > 0 && x <= fract->size_win_x && y > 0 && y <= fract->size_win_y)
+	if (x > 0 && x <= fract->size_win_x && y > 0 && y <= fract->size_win_y
+			&& fract->select == JULIA)
 	{
 		x = x - (fract->size_win_x / 2);
 		y = y - (fract->size_win_y / 2);

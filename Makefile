@@ -6,7 +6,7 @@
 #    By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/11 13:59:37 by pierre            #+#    #+#              #
-#    Updated: 2018/02/16 00:33:29 by pleroux          ###   ########.fr        #
+#    Updated: 2018/02/17 18:16:31 by pierre           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,12 @@ ifeq ($(UNAME_S), Linux)
 	LIB_MLX= minilibx/libmlx.a
 	LIB_MLX_PATH = minilibx/
 	CFLAGS= -I$(INC) -I$(LIB_MLX_PATH) -Ilibft/includes -Wall -Werror -Wextra
-	LIB_FLAGS= -L$(LIB_MLX_PATH) -lmlx -L$(INCLIB) -lXext -lX11 -lm -L$(LIB_PATH) -lft
+	LIB_FLAGS= -L$(LIB_MLX_PATH) -lmlx -L$(INCLIB) -lXext -lX11 -lm -L$(LIB_PATH) -lft -lpthread
 else
 	LIB_MLX= minilibx_macos/libmlx.a
 	LIB_MLX_PATH = minilibx_macos/
 	CFLAGS= -I$(INC) -I$(LIB_MLX_PATH) -Ilibft/includes -Wall -Werror -Wextra
-	LIB_FLAGS= -lm -L$(LIB_PATH) -lft -L$(LIB_MLX_PATH) -lmlx -framework OpenGL -framework AppKit
+	LIB_FLAGS= -lm -L$(LIB_PATH) -lft -L$(LIB_MLX_PATH) -lmlx -framework OpenGL -framework AppKit -lpthread
 endif
 NAME= fractol
 SRC_DIR = src/
@@ -39,7 +39,8 @@ SRC_FILE = main.c \
 		   init.c \
 		   mandelbrot.c \
 		   misc.c \
-		   arg.c
+		   arg.c \
+		   threads.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 OBJ = $(SRC:.c=.o)
 

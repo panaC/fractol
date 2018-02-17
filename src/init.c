@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 11:27:51 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/16 10:51:19 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/02/17 19:03:40 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int			init_fract(t_fract *fract, int s)
 
 int			init(t_fract *fract)
 {
+	ft_setparam_int(fract->arg, "threads", &(fract->nb_threads), NB_THREADS);
 	ft_setparam_int(fract->arg, "iter", &(fract->iter_max), ITER);
 	ft_setparam_int(fract->arg, "speed", &(fract->speed), SPEED);
 	ft_setparam_doubleint(fract->arg, "size-win", &(fract->size_win_x), SIZE_X);

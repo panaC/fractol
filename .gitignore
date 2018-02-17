@@ -2,3 +2,5 @@ fractol
 *.o
 test/*
 .*
+a.out
+*.dSYM
