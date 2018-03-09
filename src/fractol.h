@@ -6,21 +6,21 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 10:49:51 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/17 18:57:27 by pierre           ###   ########.fr       */
+/*   Updated: 2018/03/09 10:33:59 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _FRACTOL_H
 # define _FRACTOL_H
 
-#include <libft.h>
-#include <arg.h>
+# include <libft.h>
+# include <arg.h>
 
 # ifdef __linux__
 #  define K_ESCAPE		65307
-#  define K_LEFT		65361
 #  define K_UP			65362
 #  define K_RIGHT		65363
+#  define K_LEFT		65361
 #  define K_DOWN		65364
 #  define K_A			'a'
 #  define K_Z			'z'
@@ -134,49 +134,48 @@ typedef struct				s_draw
 	int						numero;
 	t_fract					*fract;
 }							t_draw;
-	
 
 /*
 ** init.c
 */
 
-int			init_mlx(t_fract *fract);
-int			init(t_fract *fract);
-int			init_fract(t_fract *fract, int s);
+int							init_mlx(t_fract *fract);
+int							init(t_fract *fract);
+int							init_fract(t_fract *fract, int s);
 
 /*
 ** it.c
 */
 
-int			expose_win(t_fract *fract);
-int			key_win(int key, t_fract *fract);
-int			mouse_win(int but, int x, int y, void *p);
-int			motion_win(int x, int y, void *p);
+int							expose_win(t_fract *fract);
+int							key_win(int key, t_fract *fract);
+int							mouse_win(int but, int x, int y, void *p);
+int							motion_win(int x, int y, void *p);
 
 /*
 ** mandelbrot.c
 */
 
-void		*draw(void *p);
+void						*draw(void *p);
 
 /*
 ** misc.c
 */
 
-int			free_fract(t_fract **fract);
-int			put_image(t_fract *f, int x, int y, int i);
-int			color(t_fract *f, int i, int n);
+int							free_fract(t_fract **fract);
+int							put_image(t_fract *f, int x, int y, int i);
+int							color(t_fract *f, int i, int n);
 
 /*
 ** arg.c
 */
 
-t_bool		check_arg(t_fract *fract, int ac, char **av);
+t_bool						check_arg(t_fract *fract, int ac, char **av);
 
 /*
-**
+** thread.c
 */
 
-int			draw_threads(t_fract *fract);
+int							draw_threads(t_fract *fract);
 
 #endif

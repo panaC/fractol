@@ -17,6 +17,7 @@
 int		main(int ac, char **av)
 {
 	t_fract		*fract;
+
 	if ((!(fract = (t_fract*)ft_memalloc(sizeof(*fract)))))
 		return (TRUE);
 	if (!check_arg(fract, ac, av))

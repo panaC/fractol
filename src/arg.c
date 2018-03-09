@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 23:39:29 by pleroux           #+#    #+#             */
-/*   Updated: 2018/02/17 19:04:58 by pierre           ###   ########.fr       */
+/*   Updated: 2018/03/09 10:32:37 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 #include <libft.h>
 #include "fractol.h"
 
-	static t_bool		error_arg(t_string s)
-	{
-		ft_putstr("Usage ");
-		ft_putstr(s);
-		ft_putstr(" [option] fractal\n\n");
-		ft_putstr("Fractal explorer\n"
-				"fractal : mandelbrot / julia / burn\n\n");
-		ft_putstr(" OPTIONS :        \n"
-				" --iter=NUM\t\tNumber of iteration fractal suit\n"
-				" --speed=NUM\t\tSpeed between 10 to 20\n"
-				" --size-win=NUM,NUM\tWindow size by x,y\n"
-				" --threads=NUM\t\tNumber of threads between 4 to 200\n"
-				" --help\t\t\tThis help\n\n"
-				" CONTROLS :\n"
-				" q-w-e-r-t-y-u-i-o-p :\n"
-				"\tChange the color\n"
-				" Mouse left-right click :\n"
-				"\tzoom In or Out\n");
-		return (FALSE);
-	}
+static t_bool		error_arg(t_string s)
+{
+	ft_putstr("Usage ");
+	ft_putstr(s);
+	ft_putstr(" [option] fractal\n\n");
+	ft_putstr("Fractal explorer\n"
+			"fractal : mandelbrot / julia / burn\n\n");
+	ft_putstr(" OPTIONS :        \n"
+			" --iter=NUM\t\tNumber of iteration fractal suit\n"
+			" --speed=NUM\t\tSpeed between 10 to 20\n"
+			" --size-win=NUM,NUM\tWindow size by x,y\n"
+			" --threads=NUM\t\tNumber of threads between 4 to 200\n"
+			" --help\t\t\tThis help\n\n"
+			" CONTROLS :\n"
+			" q-w-e-r-t-y-u-i-o-p :\n"
+			"\tChange the color\n"
+			" Mouse left-right click :\n"
+			"\tzoom In or Out\n");
+	return (FALSE);
+}
 
 static t_list		*set_arg(void)
 {

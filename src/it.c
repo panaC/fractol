@@ -18,11 +18,11 @@
 
 int			expose_win(t_fract *fract)
 {
-	if (!((fract->img.img = mlx_new_image(fract->mlx, fract->size_win_x, fract->size_win_y))))
+	if (!((fract->img.img = mlx_new_image(fract->mlx,
+		fract->size_win_x, fract->size_win_y))))
 		return (FALSE);
 	fract->img.addr = mlx_get_data_addr(fract->img.img, &(fract->img.bpp),
 			&(fract->img.size_line), &(fract->img.endian));
-//	draw(fract);
 	draw_threads(fract);
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->img.img, 0, 0);
 	mlx_destroy_image(fract->mlx, fract->img.img);
@@ -32,7 +32,7 @@ int			expose_win(t_fract *fract)
 int			motion_win(int x, int y, void *p)
 {
 	t_fract		*fract;
-	
+
 	fract = (t_fract*)p;
 	if (x > 0 && x <= fract->size_win_x && y > 0 && y <= fract->size_win_y
 			&& fract->select == JULIA)
@@ -49,7 +49,7 @@ int			motion_win(int x, int y, void *p)
 int			mouse_win(int but, int x, int y, void *p)
 {
 	t_fract		*fract;
-	
+
 	fract = (t_fract*)p;
 	if (x > 0 && x <= fract->size_win_x && y > 0 && y <= fract->size_win_y)
 	{

@@ -20,12 +20,12 @@ static void		init_draw(t_draw *d, t_fract *fract)
 {
 	double			rapport;
 	int				size;
-	
+
 	rapport = (double)fract->size_win_x / (double)fract->size_win_y;
 	d->x1 = fract->mouse_x - fract->h;
 	d->x2 = fract->mouse_x + fract->h;
 	d->y1 = fract->mouse_y - (fract->h / (long double)rapport);
-	d->y2 =  fract->mouse_y + (fract->h / (long double)rapport);
+	d->y2 = fract->mouse_y + (fract->h / (long double)rapport);
 	d->img_x = (int)((d->x2 - d->x1) * fract->zoom);
 	d->img_y = (int)((d->y2 - d->y1) * fract->zoom);
 	size = d->img_x / fract->nb_threads;
@@ -43,11 +43,11 @@ static void		mandelbrot(t_draw *d, t_fract *fract, int *i)
 	d->zr = 0.0;
 	d->zi = 0.0;
 	*i = 0;
-	while ((d->zr*d->zr + d->zi*d->zi) < 4.0 && *i < fract->iter_max)
+	while ((d->zr * d->zr + d->zi * d->zi) < 4.0 && *i < fract->iter_max)
 	{
 		tmp = d->zr;
-		d->zr = d->zr*d->zr - d->zi*d->zi + d->cr;
-		d->zi = 2*d->zi*tmp + d->ci;
+		d->zr = d->zr * d->zr - d->zi * d->zi + d->cr;
+		d->zi = 2 * d->zi * tmp + d->ci;
 		*i = *i + 1;
 	}
 }
@@ -61,11 +61,11 @@ static void		julia(t_draw *d, t_fract *fract, int *i)
 	d->zr = d->x / fract->zoom + d->x1;
 	d->zi = d->y / fract->zoom + d->y1;
 	*i = 0;
-	while ((d->zr*d->zr + d->zi*d->zi) < 4.0 && *i < fract->iter_max)
+	while ((d->zr * d->zr + d->zi * d->zi) < 4.0 && *i < fract->iter_max)
 	{
 		tmp = d->zr;
-		d->zr = d->zr*d->zr - d->zi*d->zi + d->cr;
-		d->zi = 2*d->zi*tmp + d->ci;
+		d->zr = d->zr * d->zr - d->zi * d->zi + d->cr;
+		d->zi = 2 * d->zi * tmp + d->ci;
 		*i = *i + 1;
 	}
 }
@@ -79,10 +79,10 @@ static void		burningball(t_draw *d, t_fract *fract, int *i)
 	d->zr = 0.0;
 	d->zi = 0.0;
 	*i = 0;
-	while ((d->zr*d->zr + d->zi*d->zi) < 4.0 && *i < fract->iter_max)
+	while ((d->zr * d->zr + d->zi * d->zi) < 4.0 && *i < fract->iter_max)
 	{
-		tmp = d->zr*d->zr - d->zi*d->zi + d->cr;
-		d->zi = fabsl(2*d->zi*d->zr + d->ci);
+		tmp = d->zr * d->zr - d->zi * d->zi + d->cr;
+		d->zi = fabsl(2 * d->zi * d->zr + d->ci);
 		d->zr = fabsl(tmp);
 		*i = *i + 1;
 	}

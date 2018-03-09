@@ -15,6 +15,7 @@
 #include <arg.h>
 #include "fractol.h"
 #include <stdio.h>
+#include <stdio.h>
 
 int			init_fract(t_fract *fract, int s)
 {
@@ -29,6 +30,8 @@ int			init_fract(t_fract *fract, int s)
 int			init(t_fract *fract)
 {
 	ft_setparam_int(fract->arg, "threads", &(fract->nb_threads), NB_THREADS);
+	if (fract->nb_threads < 1 || fract->nb_threads > 200)
+		fract->nb_threads = NB_THREADS;
 	ft_setparam_int(fract->arg, "iter", &(fract->iter_max), ITER);
 	ft_setparam_int(fract->arg, "speed", &(fract->speed), SPEED);
 	ft_setparam_doubleint(fract->arg, "size-win", &(fract->size_win_x), SIZE_X);

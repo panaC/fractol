@@ -27,9 +27,12 @@ int			free_fract(t_fract **fract)
 
 int			put_image(t_fract *f, int x, int y, int i)
 {
-	f->img.addr[y * f->img.size_line + x * (f->img.bpp / 8) + 0] = color(f, i, 0);
-	f->img.addr[y * f->img.size_line + x * (f->img.bpp / 8) + 1] = color(f, i, 1);
-	f->img.addr[y * f->img.size_line + x * (f->img.bpp / 8) + 2] = color(f, i, 2);
+	f->img.addr[y * f->img.size_line + x * (f->img.bpp / 8) + 0] =
+		color(f, i, 0);
+	f->img.addr[y * f->img.size_line + x * (f->img.bpp / 8) + 1] =
+		color(f, i, 1);
+	f->img.addr[y * f->img.size_line + x * (f->img.bpp / 8) + 2] =
+		color(f, i, 2);
 	return (TRUE);
 }
 
