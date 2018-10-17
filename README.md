@@ -8,6 +8,10 @@ fractal explorer with minilib X (very small X library)
 - julia
 - burningship
 
+### features
+
+I used the long double type with quadruple precision format on 128bits -> The zoom into mandelbrot is awesome before saturation
+
 ### option 
 
 - the thread option available with choice of number of thread by CLI
